@@ -1,0 +1,44 @@
+{
+  "name": "render-then",
+  "version": "0.1.0",
+  "description": "promise-based template rendering for ES7, koa, co and others",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha -R spec -t 2000 test/*.js",
+    "test-cov": "istanbul cover node_modules/.bin/_mocha -- -R dot -t 2000 test/*.js",
+    "test-travis": "istanbul cover node_modules/.bin/_mocha --report lcovonly -- -R dot -t 2000 test/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/coderhaoxin/render-then.git"
+  },
+  "keywords": [
+    "render",
+    "async",
+    "views",
+    "koa",
+    "co"
+  ],
+  "files": [
+    "index.js"
+  ],
+  "author": "haoxin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coderhaoxin/render-then/issues"
+  },
+  "homepage": "https://github.com/coderhaoxin/render-then",
+  "dependencies": {
+    "consolidate": "^0.11.0"
+  },
+  "devDependencies": {
+    "ejs": "2",
+    "istanbul": "^0.3.5",
+    "jade": "1",
+    "mocha": "2",
+    "swig": "1"
+  }
+}
