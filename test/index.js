@@ -1,55 +1,56 @@
-'use strict';
+'use strict'
 
-// tests only for iojs
+const assert = require('assert')
+const { join } = require('path')
 
-let assert = require('assert');
-let equal = assert.strictEqual;
-let render = require('..');
+const render = require('..')
+
+const equal = assert.strictEqual
 
 describe('## render', function() {
   describe('# renderer', function() {
-    let renderer = render(__dirname + '/views', {
+    let renderer = render(join(__dirname, '/views'), {
       map: {
         html: 'swig'
       }
-    });
+    })
 
     let user = {
       name: 'haoxin',
       species: 'coder'
-    };
+    }
 
     it('renderer(user)', function(done) {
       renderer('user', {
         user: user
       }).then(function(res) {
-        equal(res, '<p>haoxin is a coder</p>\n');
-        done();
+        equal(res, '<p>haoxin is a coder</p>\n')
+        done()
       }).catch(function(err) {
-        done(err);
-      });
-    });
+        done(err)
+      })
+    })
 
     it('renderer(user.jade)', function(done) {
       renderer('user.jade', {
         user: user
       }).then(function(res) {
-        equal(res, '<p>haoxin is a coder</p>');
-        done();
+        equal(res, '<p>haoxin is a coder</p>')
+        done()
       }).catch(function(err) {
-        done(err);
-      });
-    });
+        done(err)
+      })
+    })
 
     it('renderer(user.ejs)', function(done) {
       renderer('user.ejs', {
         user: user
       }).then(function(res) {
-        equal(res, '<p>haoxin is a coder</p>');
-        done();
+        equal(res, '<p>haoxin is a coder</p>\n')
+        done()
       }).catch(function(err) {
-        done(err);
-      });
-    });
-  });
-});
+        done(err)
+      })
+    })
+  })
+})

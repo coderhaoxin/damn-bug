@@ -1,12 +1,11 @@
-'use strict';
+'use strict'
 
-var consolidate = require('consolidate');
-var path = require('path');
-var extname = path.extname;
-var extname = path.extname;
-var join = path.join;
+const consolidate = require('consolidate')
+const path = require('path')
 
-var env = process.env.NODE_ENV || 'development';
+const { extname, join } = path
+
+const env = process.env.NODE_ENV || 'development'
 
 /**
  * Pass views `dir` and `opts` to return
@@ -23,46 +22,46 @@ var env = process.env.NODE_ENV || 'development';
  */
 
 module.exports = function(dir, opts) {
-  opts = opts || {};
+  opts = opts || {}
 
   // view directory
-  dir = dir || 'views';
+  dir = dir || 'views'
 
   // default extname
-  var ext = opts.ext || opts.default || 'html';
+  var ext = opts.ext || opts.default || 'html'
 
   // engine map
-  var map = opts.map || {};
+  var map = opts.map || {}
 
   // cache compiled templates
-  var cache = opts.cache ? !!opts.cache : env !== 'development';
+  var cache = opts.cache ? !!opts.cache : env !== 'development'
 
   return function(view, locals) {
-    locals = locals || {};
+    locals = locals || {}
 
     // default extname
-    var e = extname(view);
+    var e = extname(view)
 
     if (!e) {
-      e = '.' + ext;
-      view += e;
+      e = '.' + ext
+      view += e
     }
 
     // remove leading '.'
-    e = e.slice(1);
+    e = e.slice(1)
 
     // map engine
-    locals.engine = map[e] || e;
+    locals.engine = map[e] || e
 
     // resolve
-    view = join(dir, view);
+    view = join(dir, view)
 
     // cache
-    locals.cache = cache;
+    locals.cache = cache
 
-    return render(view, locals);
-  };
-};
+    return render(view, locals)
+  }
+}
 
 /**
  * Render `view` path with optional local variables / options.
@@ -74,17 +73,17 @@ module.exports = function(dir, opts) {
  */
 
 function render(view, opts) {
-  opts = opts || {};
-  var ext = opts.engine || extname(view).slice(1);
-  var engine = consolidate[ext];
+  opts = opts || {}
+  var ext = opts.engine || extname(view).slice(1)
+  var engine = consolidate[ext]
 
   return new Promise(function(resolve, reject) {
     engine(view, opts, function(err, res) {
       if (err) {
-        reject(err);
+        reject(err)
       } else {
-        resolve(res);
+        resolve(res)
       }
-    });
-  });
+    })
+  })
 }
