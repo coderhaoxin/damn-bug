@@ -1,6 +1,6 @@
 {
   "name": "render-then",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "promise-based template rendering for ES7, koa, co and others",
   "main": "index.js",
   "directories": {
