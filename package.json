@@ -32,13 +32,19 @@
   },
   "homepage": "https://github.com/coderhaoxin/render-then",
   "dependencies": {
-    "consolidate": "^0.11.0"
+    "consolidate": "^0.15.0"
   },
   "devDependencies": {
-    "ejs": "2",
-    "istanbul": "^0.3.5",
-    "jade": "1",
-    "mocha": "2",
-    "swig": "1"
+    "ejs": "^2.5.7",
+    "eslint-config-ok": "github:haoxins/eslint-config",
+    "istanbul": "^0.4.5",
+    "jade": "^1.11.0",
+    "mocha": "^4.0.1",
+    "swig": "^1.4.2"
+  },
+  "eslintConfig": {
+    "extends": [
+      "ok"
+    ]
   }
 }
